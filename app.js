@@ -27,7 +27,7 @@ const options = {
 
 
 
-app.get('/upcoming', (req, res) => {
+app.get('/randomAPI/upcoming', (req, res) => {
     const url = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
 
     fetch(url, options)
@@ -35,7 +35,7 @@ app.get('/upcoming', (req, res) => {
         .then(json => res.send(json))
         .catch(err => console.error(err));
 })
-app.get('/now_playing', (req, res) => {
+app.get('/randomAPI/now_playing', (req, res) => {
     const url = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
 
     fetch(url, options)
@@ -43,7 +43,7 @@ app.get('/now_playing', (req, res) => {
         .then(json => res.send(json))
         .catch(err => console.error(err));
 })
-app.get('/popular', (req, res) => {
+app.get('/randomAPI/popular', (req, res) => {
     const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
 
     fetch(url, options)
@@ -51,7 +51,7 @@ app.get('/popular', (req, res) => {
         .then(json => res.send(json))
         .catch(err => console.error(err));
 })
-app.get('/top_rated', (req, res) => {
+app.get('/randomAPI/top_rated', (req, res) => {
     const url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
 
     fetch(url, options)
@@ -59,7 +59,7 @@ app.get('/top_rated', (req, res) => {
         .then(json => res.send(json))
         .catch(err => console.error(err));
 })
-app.get('/recommended/:id', (req, res) => {
+app.get('/randomAPI/recommended/:id', (req, res) => {
     const id = req.params.id;
     const url = `https://api.themoviedb.org/3/movie/${id}/recommendations`;
 
@@ -68,16 +68,16 @@ app.get('/recommended/:id', (req, res) => {
         .then(json => res.send(json))
         .catch(err => console.error(err));
 })
-app.get('/movie_details/:id', (req, res) => {
+app.get('/randomAPI/movie_details/:id', (req, res) => {
     const id = req.params.id;
-    console.log(id);
+    // console.log(id);
     const url = `https://api.themoviedb.org/3/movie/${id}?append_to_response=videos&language=en-US`;
     fetch(url, options)
         .then(response => response.json())
         .then(json => res.send(json))
         .catch(err => console.error(err));
 })
-app.get('/title/:id', (req, res) => {
+app.get('/randomAPI/title/:id', (req, res) => {
     const val = req.params.id;
     var id = "";
     var page = "";
@@ -88,14 +88,14 @@ app.get('/title/:id', (req, res) => {
         }
         page+= val[i];
     }
-    console.log(val);
+    // console.log(val);
     const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US&page=${page}`;
     fetch(url, options)
         .then(response => response.json())
         .then(json => res.send(json))
         .catch(err => console.error(err));
 })
-app.get('/recommendation/:id', (req, res) => {
+app.get('/randomAPI/recommendation/:id', (req, res) => {
     const val = req.params.id;
     var id = "";
     var page = "";
@@ -106,14 +106,14 @@ app.get('/recommendation/:id', (req, res) => {
         }
         page+= val[i];
     }
-    console.log(`request made with id:${id} and page:${page}`);
+    // console.log(`request made with id:${id} and page:${page}`);
     const url = `https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&page=${page}`;
     fetch(url, options)
         .then(response => response.json())
         .then(json => res.send(json))
         .catch(err => console.error(err));
 })
-app.get('/search/:id', (req, res) => {
+app.get('/randomAPI/search/:id', (req, res) => {
     const val = req.params.id;
     var id = "";
     var page = "";
